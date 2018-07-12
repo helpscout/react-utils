@@ -15,7 +15,11 @@
     "validate": "zero validate",
     "setup": "npm install && npm run validate -s",
     "format": "zero format",
-    "precommit": "zero precommit"
+    "precommit": "zero precommit",
+    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
+    "release": "np --no-yarn --no-publish",
+    "version": "npm run build",
+    "postversion": "npm publish"
   },
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "repository": {
@@ -32,6 +36,8 @@
   "devDependencies": {
     "@helpscout/zero": "0.0.6",
     "enzyme": "2.9.1",
+    "np": "2.20.1",
+    "nyc": "11.7.1",
     "react": "^15",
     "react-dom": "^15",
     "react-test-renderer": "16.2.0"
