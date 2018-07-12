@@ -1,4 +1,4 @@
-# ⚙️ React Utils
+# 🌀 React Utils [![npm version](https://badge.fury.io/js/%40helpscout%2Freact-utils.svg)](https://badge.fury.io/js/%40helpscout%2Freact-utils) [![Build Status](https://travis-ci.org/helpscout/react-utils.svg?branch=master)](https://travis-ci.org/helpscout/react-utils) [![Coverage Status](https://coveralls.io/repos/github/helpscout/react-utils/badge.svg?branch=master)](https://coveralls.io/github/helpscout/react-utils?branch=master)
 
 > A collection of handy utilities for React.
 
