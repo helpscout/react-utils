@@ -1,6 +1,6 @@
 {
   "name": "@helpscout/react-utils",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Handy utilities for React",
   "main": "dist/index.js",
   "private": false,
