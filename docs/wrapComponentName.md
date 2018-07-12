@@ -16,7 +16,7 @@ Wraps the name of a React component.
 
 ```jsx
 import React from 'react'
-import wrapComponentName from '@helpscout/react-utils/wrapComponentName'
+import wrapComponentName from '@helpscout/react-utils/dist/wrapComponentName'
 
 class Napolean extends React.Component {
   ...

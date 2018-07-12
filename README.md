@@ -26,7 +26,7 @@ This library comes with a handful of useful functions. Below is an example of ho
 
 ```jsx
 import React from 'react'
-import getDocumentFromComponent from '@helpscout/react-utils/getDocumentFromComponent'
+import getDocumentFromComponent from '@helpscout/react-utils/dist/getDocumentFromComponent'
 
 class Napolean extends React.Component {
   ...

@@ -16,7 +16,7 @@ Apply functions to a React component. Abstracted from [recompose](https://github
 
 ```jsx
 import React from 'react'
-import compose from '@helpscout/react-utils/compose'
+import compose from '@helpscout/react-utils/dist/compose'
 
 class Napolean extends React.Component {...}
 

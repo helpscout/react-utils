@@ -15,7 +15,7 @@ A tiny implementation of the [classnames](https://github.com/JedWatson/classname
 #### Examples
 
 ```jsx
-import classNames from '@helpscout/react-utils/classNames'
+import classNames from '@helpscout/react-utils/dist/classNames'
 
 const isFeelingHot = true
 

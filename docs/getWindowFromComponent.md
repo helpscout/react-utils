@@ -16,7 +16,7 @@ Retrieves the `window` where the Component was mounted to.
 
 ```jsx
 import React from 'react'
-import getWindowFromComponent from '@helpscout/react-utils/getWindowFromComponent'
+import getWindowFromComponent from '@helpscout/react-utils/dist/getWindowFromComponent'
 
 class Napolean extends React.Component {
   ...

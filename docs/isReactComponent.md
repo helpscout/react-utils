@@ -16,7 +16,7 @@ Determines if the provided Object is a valid React component.
 
 ```jsx
 import React from 'react'
-import isReactComponent from '@helpscout/react-utils/isReactComponent'
+import isReactComponent from '@helpscout/react-utils/dist/isReactComponent'
 
 class Kip extends React.Component {...}
 

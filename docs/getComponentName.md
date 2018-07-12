@@ -16,7 +16,7 @@ Retrieves the name of a React component.
 
 ```jsx
 import React from 'react'
-import getComponentName from '@helpscout/react-utils/getComponentName'
+import getComponentName from '@helpscout/react-utils/dist/getComponentName'
 
 class UncleRico extends React.Component {
   ...

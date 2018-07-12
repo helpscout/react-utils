@@ -16,7 +16,7 @@ Retrieves the `document` where the Component was mounted to.
 
 ```jsx
 import React from 'react'
-import getDocumentFromComponent from '@helpscout/react-utils/getDocumentFromComponent'
+import getDocumentFromComponent from '@helpscout/react-utils/dist/getDocumentFromComponent'
 
 class Napolean extends React.Component {
   ...
