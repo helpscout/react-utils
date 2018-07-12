@@ -1,0 +1,39 @@
+{
+  "name": "react-utils",
+  "version": "0.0.0",
+  "description": "Handy utilities for React",
+  "main": "dist/index.js",
+  "private": false,
+  "scripts": {
+    "add-contributor": "zero contributors add",
+    "build": "zero build",
+    "bundle": "zero build --bundle",
+    "lint": "zero lint",
+    "dev": "zero test --watchAll",
+    "test": "zero test --coverage",
+    "test:update": "npm test -- --updateSnapshot --coverage",
+    "validate": "zero validate",
+    "setup": "npm install && npm run validate -s",
+    "format": "zero format",
+    "precommit": "zero precommit"
+  },
+  "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helpscout/react-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helpscout/react-utils/issues"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16 || ^15"
+  },
+  "devDependencies": {
+    "@helpscout/zero": "0.0.6",
+    "enzyme": "2.9.1",
+    "react": "^15",
+    "react-dom": "^15",
+    "react-test-renderer": "16.2.0"
+  }
+}
