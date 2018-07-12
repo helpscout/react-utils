@@ -3,4 +3,3 @@ node_modules
 dist
 coverage
 .eslintcache
-package-lock.json
