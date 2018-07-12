@@ -1,10 +1,11 @@
-export * from './componentName'
 export * from './isType'
 export * from './reactVersion'
 
 export {default as classNames} from './classNames'
 export {default as compose} from './compose'
 export {default as enhanceComponentMethod} from './enhanceComponentMethod'
+export {default as getComponentName} from './getComponentName'
 export {default as getDocumentFromComponent} from './getDocumentFromComponent'
 export {default as getWindowFromComponent} from './getWindowFromComponent'
 export {default as isReactComponent} from './isReactComponent'
+export {default as wrapComponentName} from './wrapComponentName'
