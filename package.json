@@ -34,7 +34,7 @@
     "react": "^16 || ^15"
   },
   "devDependencies": {
-    "@helpscout/zero": "0.0.6",
+    "@helpscout/zero": "0.0.7",
     "coveralls": "3.0.0",
     "enzyme": "2.9.1",
     "np": "2.20.1",
