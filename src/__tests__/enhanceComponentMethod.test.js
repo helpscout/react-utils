@@ -34,7 +34,6 @@ describe('enhanceComponentMethod', () => {
         onClick: componentMethodSpy,
       },
     }
-    const callback = callbackSpy
 
     enhanceComponentMethod(component, 'nope')(callbackSpy)()
 
