@@ -1,4 +1,4 @@
-## Table of contents
+## API Reference
 
 - [`classNames`](./classNames.md)
 - [`compose`](./compose.md)
