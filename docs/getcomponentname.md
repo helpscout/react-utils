@@ -1,18 +1,18 @@
-# `getComponentName(Component)`
+# getComponentName
 
 Retrieves the name of a React component.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description        |
-| ----------- | ----------------- | ------------------ |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `Component` | `React.Component` | A React component. |
 
-#### Returns
+## Returns
 
 `string`: The name of a React component.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -25,3 +25,4 @@ class UncleRico extends React.Component {
 getComponentName(UncleRico)
 // UncleRico
 ```
+

@@ -1,18 +1,18 @@
-# `getDocumentFromComponent(Component)`
+# getDocumentFromComponent
 
 Retrieves the `document` where the Component was mounted to.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description          |
-| ----------- | ----------------- | -------------------- |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `Component` | `React.Component` | The React component. |
 
-#### Returns
+## Returns
 
 `Document`: The target Document.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -27,3 +27,4 @@ class Napolean extends React.Component {
   ...
 }
 ```
+

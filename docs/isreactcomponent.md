@@ -1,18 +1,18 @@
-# `isReactComponent(Component)`
+# isReactComponent
 
 Determines if the provided Object is a valid React component.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description            |
-| ----------- | ----------------- | ---------------------- |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `Component` | `React.Component` | The "React component". |
 
-#### Returns
+## Returns
 
 `boolean`: Whether the provided object was a React component or not.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -23,3 +23,4 @@ class Kip extends React.Component {...}
 isReactComponent(Kip)
 // true
 ```
+

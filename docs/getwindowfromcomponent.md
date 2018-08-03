@@ -1,18 +1,18 @@
-# `getWindowFromComponent(Component)`
+# getWindowFromComponent
 
 Retrieves the `window` where the Component was mounted to.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description          |
-| ----------- | ----------------- | -------------------- |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `Component` | `React.Component` | The React component. |
 
-#### Returns
+## Returns
 
 `Window`: The target window.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -27,3 +27,4 @@ class Napolean extends React.Component {
   ...
 }
 ```
+

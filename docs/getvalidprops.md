@@ -1,22 +1,22 @@
-# `getValidProps(props)`
+# getValidProps
 
 Filters out and returns valid React-safe props.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description        |
-| ----------- | ----------------- | ------------------ |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `props` | `Object` | An prop-object of key-value pairs. |
 
-#### Returns
+## Returns
 
 `Object`: Filtered React-safe props.
 
-#### Alias
+## Alias
 
 `restProps(props)`
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -30,3 +30,4 @@ class UncleRico extends React.Component {
   }
 }
 ```
+

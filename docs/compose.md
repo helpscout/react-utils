@@ -1,18 +1,18 @@
-# `compose(...fn)`
+# compose
 
 Apply functions to a React component. Abstracted from [recompose](https://github.com/acdlite/recompose/blob/master/src/packages/recompose/compose.js).
 
-#### Arguments
+## Arguments
 
-| Argument | Type              | Description            |
-| -------- | ----------------- | ---------------------- |
-| `...fn`  | `Array<Function>` | Enhancement functions. |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
+| `...fn` | `Array<Function>` | Enhancement functions. |
 
-#### Returns
+## Returns
 
 `Function`: The enhaned component.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -26,3 +26,4 @@ const enhancedNapolean = compose(
   bowHuntingSkills
 )(Napolean)
 ```
+

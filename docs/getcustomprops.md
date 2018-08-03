@@ -1,18 +1,18 @@
-# `getCustomProps(props)`
+# getCustomProps
 
 Filters out and returns custom non-React-safe props.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description        |
-| ----------- | ----------------- | ------------------ |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `props` | `Object` | An prop-object of key-value pairs. |
 
-#### Returns
+## Returns
 
 `Object`: Filtered custom, non-React-safe props.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -29,3 +29,4 @@ class UncleRico extends React.Component {
   }
 }
 ```
+

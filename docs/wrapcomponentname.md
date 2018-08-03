@@ -1,18 +1,18 @@
-# `wrapComponentName(Component)`
+# wrapComponentName
 
 Wraps the name of a React component.
 
-#### Arguments
+## Arguments
 
-| Argument    | Type              | Description        |
-| ----------- | ----------------- | ------------------ |
+| Argument | Type | Description |
+| :--- | :--- | :--- |
 | `Component` | `React.Component` | A React component. |
 
-#### Returns
+## Returns
 
 `string`: The wrapped name of a React component.
 
-#### Examples
+## Examples
 
 ```jsx
 import React from 'react'
@@ -25,3 +25,4 @@ class Napolean extends React.Component {
 wrapComponentName(Napolean, 'withSkills')
 // withSkills(Napolean)
 ```
+
