@@ -39,7 +39,7 @@
     "enzyme": "2.9.1",
     "husky": "1.0.0-rc.13",
     "np": "2.20.1",
-    "nyc": "11.7.1",
+    "nyc": "^13.1.0",
     "react": "^15",
     "react-dom": "^15",
     "react-test-renderer": "16.2.0"
