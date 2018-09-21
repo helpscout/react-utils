@@ -1,5 +1,5 @@
 import React from 'react'
-import {mount} from 'enzyme'
+import { mount } from 'enzyme'
 import getValidProps from '../getValidProps'
 
 test('Retrieves valid React props', () => {
@@ -12,7 +12,7 @@ test('Retrieves valid React props', () => {
     disabled: true,
     onClick: true,
     onFocus: true,
-    onBlur: true
+    onBlur: true,
   }
 
   const restProps = getValidProps(props)
@@ -47,14 +47,37 @@ test('Filters out custom props', () => {
 })
 
 test('Can render React component with valid props', () => {
-  const UncleRico = (props) => {
-    return <div {...getValidProps(props)} id='UncleRico' />
+  const UncleRico = props => {
+    return <div {...getValidProps(props)} id="UncleRico" />
   }
-  const wrapper = mount(<UncleRico id='Rico' throwSteak='atNapolean' distance='quarterMile' />)
+  const wrapper = mount(
+    <UncleRico id="Rico" throwSteak="atNapolean" distance="quarterMile" />
+  )
 
   const el = wrapper.find('div')
 
   expect(el.props().id).toBe('UncleRico')
   expect(el.props().throwSteak).toBe(undefined)
   expect(el.props().distance).toBe(undefined)
+})
+
+test('Filters out non-default on(*) props', () => {
+  const UncleRico = props => {
+    return <div {...getValidProps(props)} id="UncleRico" />
+  }
+  const wrapper = mount(
+    <UncleRico
+      id="Rico"
+      onThrowSteak="atNapolean"
+      distance="quarterMile"
+      onChange={() => {}}
+    />
+  )
+
+  const el = wrapper.find('div')
+
+  expect(el.props().id).toBe('UncleRico')
+  expect(el.props().onThrowSteak).toBe(undefined)
+  expect(el.props().distance).toBe(undefined)
+  expect(el.props().onChange).not.toBeFalsy()
 })
