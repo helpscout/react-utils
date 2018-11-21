@@ -19,7 +19,7 @@ Plucks out the diffs between two sets of Objects. Very handy in spotting the pro
 import React from 'react'
 import getShallowDiffs from '@helpscout/react-utils/dist/getShallowDiffs'
 
-class Napolean extends React.Component {
+class Napoleon extends React.Component {
   ...
   componentDidUpdate (prevProps) {
     console.log(getShallowDiffs(prevProps, this.props))

@@ -6,8 +6,8 @@
 
 ## Table of contents
 
-* [🔧 Installation](./#-installation)
-* [🕹 Usage](./#🕹-usage)
+- [🔧 Installation](./#-installation)
+- [🕹 Usage](./#🕹-usage)
 
 ## 🔧 Installation
 
@@ -25,7 +25,7 @@ This library comes with a handful of useful functions. Below is an example of ho
 import React from 'react'
 import getDocumentFromComponent from '@helpscout/react-utils/dist/getDocumentFromComponent'
 
-class Napolean extends React.Component {
+class Napoleon extends React.Component {
   ...
   componentDidMount () {
     this.doc = getDocumentFromComponent(this)
@@ -36,4 +36,3 @@ class Napolean extends React.Component {
 ```
 
 Check out [**the documentation**](docs/) for more details.
-

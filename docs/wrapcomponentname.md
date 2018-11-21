@@ -18,11 +18,11 @@ Wraps the name of a React component.
 import React from 'react'
 import wrapComponentName from '@helpscout/react-utils/dist/wrapComponentName'
 
-class Napolean extends React.Component {
+class Napoleon extends React.Component {
   ...
 }
 
-wrapComponentName(Napolean, 'withSkills')
-// withSkills(Napolean)
+wrapComponentName(Napoleon, 'withSkills')
+// withSkills(Napoleon)
 ```
 

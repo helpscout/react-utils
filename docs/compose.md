@@ -18,12 +18,12 @@ Apply functions to a React component. Abstracted from [recompose](https://github
 import React from 'react'
 import compose from '@helpscout/react-utils/dist/compose'
 
-class Napolean extends React.Component {...}
+class Napoleon extends React.Component {...}
 
-const enhancedNapolean = compose(
+const enhancedNapoleon = compose(
   nunchuckSkills,
   computerHackingSkills,
   bowHuntingSkills
-)(Napolean)
+)(Napoleon)
 ```
 

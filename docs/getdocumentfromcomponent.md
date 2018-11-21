@@ -18,7 +18,7 @@ Retrieves the `document` where the Component was mounted to.
 import React from 'react'
 import getDocumentFromComponent from '@helpscout/react-utils/dist/getDocumentFromComponent'
 
-class Napolean extends React.Component {
+class Napoleon extends React.Component {
   ...
   componentDidMount () {
     this.doc = getDocumentFromComponent(this)
