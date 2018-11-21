@@ -18,7 +18,7 @@ Retrieves the `window` where the Component was mounted to.
 import React from 'react'
 import getWindowFromComponent from '@helpscout/react-utils/dist/getWindowFromComponent'
 
-class Napolean extends React.Component {
+class Napoleon extends React.Component {
   ...
   componentDidMount () {
     this.win = getWindowFromComponent(this)

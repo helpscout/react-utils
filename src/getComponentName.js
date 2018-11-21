@@ -1,5 +1,5 @@
 // @flow
-import type {ReactComponent} from './typings/index'
+import type { ReactComponent } from './typings/index'
 import isReactComponent from './isReactComponent'
 
 /**

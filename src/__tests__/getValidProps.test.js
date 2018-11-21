@@ -51,7 +51,7 @@ test('Can render React component with valid props', () => {
     return <div {...getValidProps(props)} id="UncleRico" />
   }
   const wrapper = mount(
-    <UncleRico id="Rico" throwSteak="atNapolean" distance="quarterMile" />
+    <UncleRico id="Rico" throwSteak="atNapoleon" distance="quarterMile" />
   )
 
   const el = wrapper.find('div')
@@ -68,7 +68,7 @@ test('Filters out non-default on(*) props', () => {
   const wrapper = mount(
     <UncleRico
       id="Rico"
-      onThrowSteak="atNapolean"
+      onThrowSteak="atNapoleon"
       distance="quarterMile"
       onChange={() => {}}
     />
