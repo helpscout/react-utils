@@ -69,6 +69,19 @@ test('Logs on prop changes', () => {
   expect(console.log).toHaveBeenCalledWith('Next', { title: 'Dynamite' })
 })
 
+test('No logs if does not re-render', () => {
+  const Napoleon = () => <div />
+  Napoleon.displayName = 'Napoleon'
+  const NapoleonSpy = renderSpy()(Napoleon)
+
+  const wrapper = mount(<NapoleonSpy title="Dynamite" />)
+  wrapper.setProps({ title: 'Dynamite' })
+
+  expect(console.group).toHaveBeenCalledWith('Napoleon Mounted')
+  expect(console.group).not.toHaveBeenCalledWith('Napoleon Rendered')
+  expect(console.log).not.toHaveBeenCalled()
+})
+
 test('Logs a custom name, if provided', () => {
   const Napoleon = () => <div />
   Napoleon.displayName = 'Napoleon'

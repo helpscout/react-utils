@@ -21,13 +21,12 @@ function renderSpy(options = defaultOptions) {
         const changes = getShallowDiffs(prevProps, this.props)
         const { diffs, previous, next } = changes
 
+        if (!diffs.length) return
+
         console.group(`${displayName} Rendered`)
-        /* istanbul ignore else */
-        if (diffs.length) {
-          console.log('Changes', diffs)
-          console.log('Previous', previous)
-          console.log('Next', next)
-        }
+        console.log('Changes', diffs)
+        console.log('Previous', previous)
+        console.log('Next', next)
         console.groupEnd()
       }
 
