@@ -1,4 +1,4 @@
-# reactSpy(options)(WrappedComponent)
+# renderSpy(options)(WrappedComponent)
 
 Higher-order component that logs the mount/unmount/render cycles of a React component. Useful for debugging performance!
 
@@ -8,7 +8,7 @@ Inspired by React's performance tools and [`react-performance`](https://github.c
 
 | Argument           | Type        | Description              |
 | :----------------- | :---------- | :----------------------- |
-| `options`          | `Object`    | Options for ReactSpy.    |
+| `options`          | `Object`    | Options for renderSpy.    |
 | `WrappedComponent` | `Component` | The component to spy on. |
 
 ## Options
@@ -21,13 +21,13 @@ Inspired by React's performance tools and [`react-performance`](https://github.c
 
 ```jsx
 import React from 'react'
-import reactSpy from '@helpscout/react-utils/dist/reactSpy'
+import renderSpy from '@helpscout/react-utils/dist/renderSpy'
 
 class Napoleon extends React.Component {
   ...
 }
 
-export const reactSpy()(Napoleon)
+export const renderSpy()(Napoleon)
 ```
 
 Potential logs:
