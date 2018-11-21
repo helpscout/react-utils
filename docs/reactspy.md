@@ -38,7 +38,7 @@ Napoleon Mounted
 Napoleon Rendered
 Changes: ['votedForPedro']
 Previous: { votedForPedro: false }
-Next: { votedForPedro: false }
+Next: { votedForPedro: true }
 
 Napoleon Unmounted
 ```
