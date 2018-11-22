@@ -91,7 +91,7 @@ function renderSpy(options = defaultOptions) {
       }
 
       componentWillUnmount() {
-        this.consoleGroup('Unmounted', null, true)
+        this.consoleGroup('Unmounted', null, false)
         console.groupEnd()
       }
 
