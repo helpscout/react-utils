@@ -8,14 +8,15 @@ Inspired by React's performance tools and [`react-performance`](https://github.c
 
 | Argument           | Type        | Description              |
 | :----------------- | :---------- | :----------------------- |
-| `options`          | `Object`    | Options for renderSpy.    |
+| `options`          | `Object`    | Options for renderSpy.   |
 | `WrappedComponent` | `Component` | The component to spy on. |
 
 ## Options
 
-| Argument | Type     | Description                        |
-| :------- | :------- | :--------------------------------- |
-| `id`     | `string` | A name to be used in console logs. |
+| Argument    | Type      | Default | Description                                 |
+| :---------- | :-------- | :------ | :------------------------------------------ |
+| `id`        | `string`  |         | A name to be used in console logs.          |
+| `collapsed` | `boolean` | `true`  | How the `console` displays the information. |
 
 ## Examples
 
@@ -33,12 +34,12 @@ export const renderSpy()(Napoleon)
 Potential logs:
 
 ```
-Napoleon Mounted
+Mounted Napoleon  (in 0.16ms)
 
-Napoleon Rendered
-Changes: ['votedForPedro']
-Previous: { votedForPedro: false }
-Next: { votedForPedro: true }
+Rendered Napoleon (in 0.34ms)
+Previous   : { votedForPedro: false }
+Changes    : ['votedForPedro']
+Next       : { votedForPedro: true }
 
-Napoleon Unmounted
+Unmounted Napoleon
 ```

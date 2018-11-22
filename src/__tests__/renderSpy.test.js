@@ -4,14 +4,18 @@ import renderSpy from '../renderSpy'
 
 beforeEach(() => {
   console.group = jest.fn()
+  console.groupCollapsed = jest.fn()
   console.groupEnd = jest.fn()
   console.log = jest.fn()
+  console.table = jest.fn()
 })
 
 afterEach(() => {
   console.group.mockClear()
+  console.groupCollapsed.mockClear()
   console.groupEnd.mockClear()
   console.log.mockClear()
+  console.table.mockClear()
 })
 
 test('Creates a wrapped displayName', () => {
@@ -40,7 +44,7 @@ test('Logs on mount', () => {
 
   mount(<NapoleonSpy />)
 
-  expect(console.group).toHaveBeenCalledWith('Napoleon Mounted')
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
 })
 
 test('Logs on unmount', () => {
@@ -51,8 +55,8 @@ test('Logs on unmount', () => {
   const wrapper = mount(<NapoleonSpy />)
   wrapper.unmount()
 
-  expect(console.group).toHaveBeenCalledWith('Napoleon Mounted')
-  expect(console.group).toHaveBeenCalledWith('Napoleon Unmounted')
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
+  expect(console.groupCollapsed.mock.calls[1][0]).toContain('Unmounted')
 })
 
 test('Logs on prop changes', () => {
@@ -63,13 +67,20 @@ test('Logs on prop changes', () => {
   const wrapper = mount(<NapoleonSpy title="Nope" />)
   wrapper.setProps({ title: 'Dynamite' })
 
-  expect(console.group).toHaveBeenCalledWith('Napoleon Rendered')
-  expect(console.log).toHaveBeenCalledWith('Changes', ['title'])
-  expect(console.log).toHaveBeenCalledWith('Previous', { title: 'Nope' })
-  expect(console.log).toHaveBeenCalledWith('Next', { title: 'Dynamite' })
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
+  expect(console.groupCollapsed.mock.calls[1][0]).toContain('Rendered')
+
+  expect(console.log.mock.calls[0][0]).toContain('Previous')
+  expect(console.log.mock.calls[0][2]).toEqual({ title: 'Nope' })
+
+  expect(console.log.mock.calls[1][0]).toContain('Changes')
+  expect(console.log.mock.calls[1][2]).toEqual(['title'])
+
+  expect(console.log.mock.calls[2][0]).toContain('Next')
+  expect(console.log.mock.calls[2][2]).toEqual({ title: 'Dynamite' })
 })
 
-test('No logs if does not re-render', () => {
+test('Logs wasted renders if no prop changes', () => {
   const Napoleon = () => <div />
   Napoleon.displayName = 'Napoleon'
   const NapoleonSpy = renderSpy()(Napoleon)
@@ -77,9 +88,14 @@ test('No logs if does not re-render', () => {
   const wrapper = mount(<NapoleonSpy title="Dynamite" />)
   wrapper.setProps({ title: 'Dynamite' })
 
-  expect(console.group).toHaveBeenCalledWith('Napoleon Mounted')
-  expect(console.group).not.toHaveBeenCalledWith('Napoleon Rendered')
-  expect(console.log).not.toHaveBeenCalled()
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
+  expect(console.groupCollapsed.mock.calls[1][0]).toContain('Rendered')
+  expect(console.groupCollapsed.mock.calls[1][0]).toContain('Wasted')
+
+  expect(console.table.mock.calls[0][0]).toBeTruthy()
+  expect(
+    console.table.mock.calls[0][0][0]['Wasted renders (Total)']
+  ).toBeTruthy()
 })
 
 test('Logs a custom name, if provided', () => {
@@ -89,5 +105,24 @@ test('Logs a custom name, if provided', () => {
 
   mount(<NapoleonSpy />)
 
-  expect(console.group).toHaveBeenCalledWith('VoteForPedro Mounted')
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('VoteForPedro')
+})
+
+test('Can log renders uncollapsed, if specified', () => {
+  const Napoleon = () => <div />
+  Napoleon.displayName = 'Napoleon'
+  const NapoleonSpy = renderSpy({ collapsed: false })(Napoleon)
+
+  const wrapper = mount(<NapoleonSpy title="Dynamite" />)
+  wrapper.setProps({ title: 'Dynamite' })
+
+  expect(console.groupCollapsed.mock.calls[0][0]).toContain('Mounted')
+  expect(console.group.mock.calls[0][0]).toContain('Rendered')
+  expect(console.group.mock.calls[0][0]).toContain('Wasted')
+
+  expect(console.table.mock.calls[0][0]).toBeTruthy()
+  expect(
+    console.table.mock.calls[0][0][0]['Wasted renders (Total)']
+  ).toBeTruthy()
 })
