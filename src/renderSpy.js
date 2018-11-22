@@ -17,7 +17,7 @@ const renderSpyWastedRenderCollection = {}
 
 function renderSpy(options = defaultOptions) {
   return function(WrappedComponent) {
-    const { collapsed, id } = options
+    const { collapsed, id } = { ...defaultOptions, ...options }
     const displayName = id || getComponentName(WrappedComponent)
 
     class ReactRenderSpy extends React.Component {
