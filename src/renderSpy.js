@@ -91,14 +91,15 @@ function renderSpy(options = defaultOptions) {
       }
 
       componentWillUnmount() {
-        this.consoleGroup('Unmounted', null, false)
+        this.consoleGroup('Unmounted', null, true)
         console.groupEnd()
       }
 
       consoleGroup = (action, renderTime, collapsed, extra) => {
+        const hasRenderTime = renderTime !== undefined && renderTime !== null
         let message = `%c${action} %c${displayName}`
 
-        if (renderTime !== undefined && renderTime !== null) {
+        if (hasRenderTime) {
           message += ` %c(in ${renderTime.toFixed(2)}ms)`
         }
 
@@ -110,7 +111,7 @@ function renderSpy(options = defaultOptions) {
           message,
           'color: gray; font-weight: normal',
           'color: black',
-          'color: gray; font-weight: normal',
+          hasRenderTime ? 'color: gray; font-weight: normal' : '',
           extra ? 'color: gray; font-weight: normal' : '',
         ]
 
