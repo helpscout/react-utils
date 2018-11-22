@@ -1,17 +1,35 @@
 import isReactComponent from './isReactComponent'
 
 function getOwnerDisplayName(Component: ReactComponent): string {
-  if (!isReactComponent(Component)) return ''
-  // Currently only tested with React 15
-  // React 16 (Fibre)'s _reactInternalInstance shape is very different.
-  /* istanbul ignore if */
-  if (!Component._reactInternalInstance) return ''
-  if (!Component._reactInternalInstance._currentElement) return ''
-  if (!Component._reactInternalInstance._currentElement._owner) return ''
-  if (!Component._reactInternalInstance._currentElement._owner.getName)
-    return ''
+  let ownerName = ''
 
-  return Component._reactInternalInstance._currentElement._owner.getName()
+  if (!isReactComponent(Component)) return ownerName
+
+  // React 16.x
+  if (Component._reactInternalFiber) {
+    try {
+      ownerName =
+        Component._reactInternalInstance.return.return.stateNode.constructor
+          .name
+    } catch (err) {
+      ownerName = ''
+    }
+
+    return ownerName
+  }
+
+  // React 15.x
+  if (Component._reactInternalInstance) {
+    try {
+      ownerName = Component._reactInternalInstance._currentElement._owner.getName()
+    } catch (err) {
+      ownerName = ''
+    }
+
+    return ownerName
+  }
+
+  return ownerName
 }
 
 export default getOwnerDisplayName
