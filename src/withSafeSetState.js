@@ -17,20 +17,20 @@ function withSafeSetState() {
     WrappedComponent.prototype.componentDidMount = function(...args) {
       isMounted = true
       if (componentDidMount) {
-        componentDidMount.bind(this)(...args)
+        componentDidMount.apply(this, args)
       }
     }
 
     WrappedComponent.prototype.componentWillUnmount = function(...args) {
       isMounted = false
       if (componentWillUnmount) {
-        componentWillUnmount.bind(this)(...args)
+        componentWillUnmount.apply(this, args)
       }
     }
 
     WrappedComponent.prototype.setState = function(...args) {
       if (isMounted && setState) {
-        setState.bind(this)(...args)
+        setState.apply(this, args)
       }
     }
 

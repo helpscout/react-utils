@@ -150,7 +150,16 @@ describe('withSafeSetState', () => {
   })
 
   test('Can internally check if a component is mounted', () => {
+    const spy = jest.fn()
     class Sample extends React.Component {
+      someSetStateMethod(callback) {
+        this.setState(
+          {
+            gogo: true,
+          },
+          callback
+        )
+      }
       render() {
         return null
       }
@@ -160,9 +169,14 @@ describe('withSafeSetState', () => {
     const Compo = wrapper.find('Sample').getNode()
 
     expect(Compo.isComponentMounted()).toBe(true)
+    Compo.someSetStateMethod(spy)
+    expect(spy).toHaveBeenCalledTimes(1)
 
     wrapper.unmount()
 
     expect(Compo.isComponentMounted()).toBe(false)
+
+    Compo.someSetStateMethod(spy)
+    expect(spy).toHaveBeenCalledTimes(1)
   })
 })
