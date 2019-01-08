@@ -59,6 +59,7 @@
   ],
   "dependencies": {
     "create-react-context": "0.2.2",
+    "dash-get": "1.0.1",
     "hoist-non-react-statics": "3.0.1"
   }
 }

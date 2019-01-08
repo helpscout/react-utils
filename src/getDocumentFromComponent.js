@@ -1,6 +1,7 @@
 // @flow
-import type {ReactComponent} from './typings/index'
+import type { ReactComponent } from './typings/index'
 import isReactComponent from './isReactComponent'
+import get from 'dash-get'
 
 /**
  * Retrieves the document where the React Component has been
@@ -14,19 +15,25 @@ function getDocumentFromComponent(Component: ReactComponent): Document {
 
   // React 16.x
   if (Component._reactInternalFiber) {
-    return (
-      Component._reactInternalFiber.return &&
-      Component._reactInternalFiber.return.stateNode &&
-      Component._reactInternalFiber.return.stateNode.ownerDocument
+    const levelOneCheck = get(
+      Component,
+      '_reactInternalFiber.return.stateNode.ownerDocument'
     )
+    const levelTwoCheck = get(
+      Component,
+      '_reactInternalFiber._debugOwner.return.stateNode.ownerDocument'
+    )
+    const levelThreeCheck = get(
+      Component,
+      '_reactInternalFiber._debugOwner._debugOwner.return.stateNode.ownerDocument'
+    )
+
+    return levelOneCheck || levelTwoCheck || levelThreeCheck || document
   }
   // React 15.x
   /* istanbul ignore else */
   if (Component._reactInternalInstance) {
-    return (
-      Component._reactInternalInstance._context &&
-      Component._reactInternalInstance._context.document
-    )
+    return get(Component, '_reactInternalInstance._context.document', document)
   }
   /* istanbul ignore next */
   return document
