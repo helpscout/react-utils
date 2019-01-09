@@ -64,6 +64,26 @@ test('Can retrieve the document from a React component (16)', () => {
   }
 
   expect(getDocumentFromComponent(mockNonsenseComponent)).toBe(document)
+
+  const mockValidEmptyComponent = {
+    _reactInternalFiber: {
+      _debugOwner: null,
+    },
+  }
+
+  expect(getDocumentFromComponent(mockValidEmptyComponent)).toBe(document)
+
+  const mockValidEmptyComponent2 = {
+    _reactInternalFiber: {
+      _debugOwner: {
+        _debugOwner: {
+          return: null,
+        },
+      },
+    },
+  }
+
+  expect(getDocumentFromComponent(mockValidEmptyComponent2)).toBe(document)
 })
 
 test('Fallsback to window.document, if React document cannot be retrieved', () => {
