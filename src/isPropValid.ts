@@ -1,4 +1,3 @@
-// @flow
 // Source:
 // https://github.com/styled-components/styled-components/blob/master/src/utils/validAttr.js
 

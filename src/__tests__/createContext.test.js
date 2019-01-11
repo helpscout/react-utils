@@ -12,7 +12,7 @@ describe('createContext', () => {
         <div>
           <ThemedButton />
         </div>
-      );
+      )
     }
 
     function ThemedButton(props) {
@@ -20,7 +20,7 @@ describe('createContext', () => {
         <ThemeContext.Consumer>
           {theme => <Button {...props} theme={theme} />}
         </ThemeContext.Consumer>
-      );
+      )
     }
 
     function Button(props) {
@@ -44,6 +44,6 @@ describe('createContext', () => {
 
     wrapper.setProps({ value: 'light' })
 
-    expect(el.props().style.background).toBe('white')
+    expect(wrapper.find('button').props().style.background).toBe('white')
   })
 })

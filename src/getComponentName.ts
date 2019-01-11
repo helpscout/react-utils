@@ -1,5 +1,5 @@
-// @flow
-import type { ReactComponent } from './typings/index'
+import get from 'dash-get'
+import { ReactComponent } from './typings/index'
 import isReactComponent from './isReactComponent'
 
 /**
@@ -10,7 +10,7 @@ import isReactComponent from './isReactComponent'
 function getComponentName(Component: ReactComponent): string {
   if (!isReactComponent(Component)) return ''
 
-  return Component.displayName || Component.name || 'Component'
+  return get(Component, 'displayName') || get(Component, 'name') || 'Component'
 }
 
 export default getComponentName

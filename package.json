@@ -6,8 +6,12 @@
   "private": false,
   "scripts": {
     "add-contributor": "zero contributors add",
-    "build": "zero build",
+    "prestart": "npm run check:npm",
+    "build:ts": "tsc",
+    "build:postclean": "rm -rf dist/__tests__ && rm -rf dist/__fixtures__",
+    "build": "npm run clean && npm run build:ts && npm run build:postclean",
     "bundle": "zero build --bundle",
+    "clean": "rm -rf dist",
     "lint": "zero lint",
     "dev": "zero test --watchAll",
     "test": "zero test --coverage",
@@ -26,6 +30,11 @@
     "prettier": "prettier \"src/**/*.js\" --write",
     "pretty": "npm run prettier"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "repository": {
     "type": "git",
@@ -39,27 +48,33 @@
     "react": "^16 || ^15"
   },
   "devDependencies": {
-    "@helpscout/zero": "^0.0.8",
-    "@storybook/addon-actions": "^3.4.3",
-    "@storybook/addon-links": "^3.4.3",
-    "@storybook/addons": "^3.4.3",
-    "@storybook/cli": "^3.4.11",
-    "@storybook/react": "^3.4.3",
+    "@helpscout/zero": "1.0.3",
+    "@storybook/addon-actions": "4.1.6",
+    "@storybook/addon-links": "4.1.6",
+    "@storybook/addons": "4.1.6",
+    "@storybook/cli": "4.1.6",
+    "@storybook/react": "4.1.6",
+    "@types/enzyme": "3.1.15",
+    "@types/jest": "23.3.12",
+    "@types/react": "16.7.18",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^23.6.0",
     "coveralls": "3.0.0",
-    "enzyme": "2.9.1",
-    "husky": "1.0.0-rc.13",
-    "np": "2.20.1",
-    "nyc": "^13.1.0",
-    "react": "^15",
-    "react-dom": "^15",
-    "react-test-renderer": "16.2.0"
+    "enzyme": "3.8.0",
+    "enzyme-adapter-react-16": "1.7.1",
+    "husky": "1.3.1",
+    "np": "3.1.0",
+    "nyc": "13.1.0",
+    "react": "^16",
+    "react-dom": "^16",
+    "react-test-renderer": "^16.7.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
-    "create-react-context": "0.2.2",
+    "create-react-context": "0.2.3",
     "dash-get": "1.0.2",
-    "hoist-non-react-statics": "3.0.1"
+    "enzyme-adapter-react-16": "^1.7.1",
+    "hoist-non-react-statics": "3.2.1"
   }
 }

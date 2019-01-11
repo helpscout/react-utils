@@ -1,26 +1,26 @@
+import { ReactComponent } from './typings/index'
 import isReactComponent from './isReactComponent'
+import get from 'dash-get'
+import { isReact16, isReact15 } from './reactVersion'
 
-function getOwnerDisplayName(Component: ReactComponent): string {
+function getOwnerDisplayName(Component: any): string {
   let ownerName = ''
 
   if (!isReactComponent(Component)) return ownerName
 
   // React 16.x
-  if (Component._reactInternalFiber) {
-    try {
-      ownerName =
-        Component._reactInternalInstance.return.return.stateNode.constructor
-          .name
-    } catch (err) {
-      ownerName = ''
-    }
-
-    return ownerName
+  if (isReact16(Component)) {
+    return get(
+      Component,
+      '_reactInternalInstance.return.return.stateNode.constructor.name',
+      ''
+    )
   }
 
   // React 15.x
-  if (Component._reactInternalInstance) {
+  if (isReact15(Component)) {
     try {
+      // @ts-ignore
       ownerName = Component._reactInternalInstance._currentElement._owner.getName()
     } catch (err) {
       ownerName = ''

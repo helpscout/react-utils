@@ -80,7 +80,7 @@ describe('withSafeSetState', () => {
 
     const EnhancedSample = withSafeSetState()(Sample)
     const wrapper = mount(<EnhancedSample />)
-    const Compo = wrapper.find('Sample').getNode()
+    const Compo = wrapper.find('Sample').instance()
 
     expect(Compo.state.active).toBe(true)
 
@@ -109,7 +109,7 @@ describe('withSafeSetState', () => {
 
     const EnhancedSample = withSafeSetState()(Sample)
     const wrapper = mount(<EnhancedSample />)
-    const Compo = wrapper.find('Sample').getNode()
+    const Compo = wrapper.find('Sample').instance()
 
     expect(Compo.state.active).toBe(false)
 
@@ -142,7 +142,7 @@ describe('withSafeSetState', () => {
     }
     const EnhancedSample = withSafeSetState()(Sample)
     const wrapper = mount(<EnhancedSample />)
-    const Compo = wrapper.find('Sample').getNode()
+    const Compo = wrapper.find('Sample').instance()
 
     wrapper.unmount()
 
@@ -166,7 +166,7 @@ describe('withSafeSetState', () => {
     }
     const EnhancedSample = withSafeSetState()(Sample)
     const wrapper = mount(<EnhancedSample />)
-    const Compo = wrapper.find('Sample').getNode()
+    const Compo = wrapper.find('Sample').instance()
 
     expect(Compo.isComponentMounted()).toBe(true)
     Compo.someSetStateMethod(spy)
