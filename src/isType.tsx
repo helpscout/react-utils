@@ -1,7 +1,8 @@
-// @flow
-import type {ReactComponent} from './typings/index'
-import React from 'react'
+import * as React from 'react'
+import { ReactComponent } from './typings/index'
+import get from 'dash-get'
 import isReactComponent from './isReactComponent'
+import { isArray } from './utils'
 
 /**
  * Checks to see if a React component is a specific type.
@@ -11,21 +12,17 @@ import isReactComponent from './isReactComponent'
  */
 export const isComponentOneOfType = (
   Component: ReactComponent,
-  types: Array<any> | string,
+  types: Array<any> | string
 ): boolean => {
   if (
     !isReactComponent(Component) ||
     (!Array.isArray(types) && typeof types !== 'string')
   )
     return false
-  const isArray = Array.isArray(types)
 
-  return React.isValidElement(Component) &&
-    Array.isArray(types) &&
-    Component.type &&
-    isArray
+  return React.isValidElement(Component) && Component.type && isArray(types)
     ? types.some(o => o === Component.type)
-    : Component.type === types
+    : get(Component, 'type') === types
 }
 
 /**

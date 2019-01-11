@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import hoistNonReactStatic from './hoistNonReactStatics'
 
 /**
@@ -14,23 +14,23 @@ function withSafeSetState() {
       setState,
     } = WrappedComponent.prototype
 
-    WrappedComponent.prototype.componentDidMount = function(...args) {
+    WrappedComponent.prototype.componentDidMount = function() {
       isMounted = true
       if (componentDidMount) {
-        componentDidMount.apply(this, args)
+        componentDidMount.apply(this, arguments)
       }
     }
 
-    WrappedComponent.prototype.componentWillUnmount = function(...args) {
+    WrappedComponent.prototype.componentWillUnmount = function() {
       isMounted = false
       if (componentWillUnmount) {
-        componentWillUnmount.apply(this, args)
+        componentWillUnmount.apply(this, arguments)
       }
     }
 
-    WrappedComponent.prototype.setState = function(...args) {
+    WrappedComponent.prototype.setState = function() {
       if (isMounted && setState) {
-        setState.apply(this, args)
+        setState.apply(this, arguments)
       }
     }
 

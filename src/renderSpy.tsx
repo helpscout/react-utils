@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import hoistNonReactStatics from './hoistNonReactStatics'
 import getShallowDiffs from './getShallowDiffs'
 import getComponentName from './getComponentName'
@@ -15,14 +15,15 @@ const uniqueId = createUniqueIDFactory('renderSpy')
 // Use this to globally collect all the wasted renders from our spies
 const renderSpyWastedRenderCollection = {}
 
-function renderSpy(options = defaultOptions) {
+function renderSpy(options) {
   return function(WrappedComponent) {
-    const { collapsed, id } = { ...defaultOptions, ...options }
+    const mergedOptions = { ...defaultOptions, ...options }
+    const { collapsed, id } = mergedOptions
     const displayName = id || getComponentName(WrappedComponent)
 
     class ReactRenderSpy extends React.Component {
       internalId = uniqueId()
-      performanceTimer = undefined
+      performanceTimer: number = 0
       ownerDisplayName = ''
 
       componentWillMount() {
@@ -95,7 +96,12 @@ function renderSpy(options = defaultOptions) {
         console.groupEnd()
       }
 
-      consoleGroup = (action, renderTime, collapsed, extra) => {
+      consoleGroup = (
+        action: string,
+        renderTime: any,
+        collapsed: boolean,
+        extra?: any
+      ) => {
         const hasRenderTime = renderTime !== undefined && renderTime !== null
         let message = `%c${action} %c${displayName}`
 
@@ -127,7 +133,7 @@ function renderSpy(options = defaultOptions) {
         const end = window.performance.now()
         const renderTime = end - start
         // Reset the internal timer
-        this.performanceTimer = undefined
+        this.performanceTimer = 0
 
         return renderTime
       }
@@ -158,14 +164,15 @@ function renderSpy(options = defaultOptions) {
 
 export function addToWastedRenderCollection({
   renderSpyWastedRenderCollection,
-  uniqueComponentId,
+  id,
   displayName,
   ownerDisplayName,
   renderTime,
 }) {
   // Add to collection, if it doesn't exist
-  if (!renderSpyWastedRenderCollection[uniqueComponentId]) {
-    renderSpyWastedRenderCollection[uniqueComponentId] = {
+  /* istanbul ignore else */
+  if (!renderSpyWastedRenderCollection[id]) {
+    renderSpyWastedRenderCollection[id] = {
       component: displayName,
       ownerDisplayName,
       wastedRenders: 0,
@@ -174,7 +181,7 @@ export function addToWastedRenderCollection({
   }
 
   // Update the data in the collection
-  const componentData = renderSpyWastedRenderCollection[uniqueComponentId]
+  const componentData = renderSpyWastedRenderCollection[id]
   componentData.wastedRenders = componentData.wastedRenders + 1
   componentData.renderTime = renderTime
 }
@@ -184,13 +191,16 @@ export function printWastedRenderCollection(renderSpyWastedRenderCollection) {
     // Order by wasted renders
     .sort(
       /* istanbul ignore next */
+      // @ts-ignore
       (a, b) => b.wastedRenders - a.wastedRenders
     )
     // Make the data pretty for printing
     .map(item => {
+      // @ts-ignore
       const { component, ownerDisplayName, wastedRenders, renderTime } = item
       const ownerComponentValue = ownerDisplayName.length
-        ? `${ownerDisplayName} > ${component}`
+        ? /* istanbul ignore next */
+          `${ownerDisplayName} > ${component}`
         : /* istanbul ignore next */
           component
 

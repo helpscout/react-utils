@@ -1,7 +1,5 @@
-// @flow
-import type {ReactComponent} from './typings/index'
-import {isReact15Up} from './reactVersion'
-import {isFunction, isObject} from './utils'
+import { isReact15Up } from './reactVersion'
+import { isFunction, isObject } from './utils'
 
 /**
  * Determines if the object is a React component.
@@ -9,7 +7,7 @@ import {isFunction, isObject} from './utils'
  * @param   {React.Component} Component A React.Component.
  * @returns {boolean} Truthiness.
  */
-function isReactComponent(Component: ReactComponent): boolean {
+function isReactComponent(Component: any): boolean {
   // Stateless functional components
   if (isFunction(Component)) {
     return true

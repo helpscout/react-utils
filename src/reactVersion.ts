@@ -1,6 +1,6 @@
-// @flow
-import type {ReactComponent} from './typings/index'
-import {isObject} from './utils'
+import get from 'dash-get'
+import { ReactComponent } from './typings/index'
+import { isObject } from './utils'
 
 /**
  * Checks to see if React is v15, by checking the provided component.
@@ -8,7 +8,7 @@ import {isObject} from './utils'
  * @returns {boolean}
  */
 export function isReact15(Component: ReactComponent): boolean {
-  return isObject(Component) && Component._reactInternalInstance
+  return isObject(Component) && get(Component, '_reactInternalInstance')
 }
 
 /**
@@ -17,7 +17,7 @@ export function isReact15(Component: ReactComponent): boolean {
  * @returns {boolean}
  */
 export function isReact16(Component: ReactComponent): boolean {
-  return isObject(Component) && Component._reactInternalFiber
+  return isObject(Component) && get(Component, '_reactInternalFiber')
 }
 
 /**

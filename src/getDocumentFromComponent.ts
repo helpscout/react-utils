@@ -1,7 +1,7 @@
-// @flow
-import type { ReactComponent } from './typings/index'
-import isReactComponent from './isReactComponent'
 import get from 'dash-get'
+import { ReactComponent } from './typings/index'
+import isReactComponent from './isReactComponent'
+import { isReact16, isReact15 } from './reactVersion'
 
 /**
  * Retrieves the document where the React Component has been
@@ -14,7 +14,7 @@ function getDocumentFromComponent(Component: ReactComponent): Document {
   if (!isReactComponent(Component)) return document
 
   // React 16.x
-  if (Component._reactInternalFiber) {
+  if (isReact16(Component)) {
     const levelOneCheck = get(
       Component,
       '_reactInternalFiber.return.stateNode.ownerDocument'
@@ -32,7 +32,7 @@ function getDocumentFromComponent(Component: ReactComponent): Document {
   }
   // React 15.x
   /* istanbul ignore else */
-  if (Component._reactInternalInstance) {
+  if (isReact15(Component)) {
     return get(Component, '_reactInternalInstance._context.document', document)
   }
   /* istanbul ignore next */

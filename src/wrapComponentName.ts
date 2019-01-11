@@ -1,5 +1,4 @@
-// @flow
-import type {ReactComponent} from './typings/index'
+import { ReactComponent } from './typings/index'
 import getComponentName from './getComponentName'
 
 /**
@@ -9,7 +8,7 @@ import getComponentName from './getComponentName'
  */
 function wrapComponentName(
   Component: ReactComponent,
-  wrapperName: string,
+  wrapperName: string
 ): string {
   const componentName = getComponentName(Component)
   if (!wrapperName) return componentName

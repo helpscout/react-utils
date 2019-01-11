@@ -1,4 +1,3 @@
-// @flow
 // Source:
 // https://github.com/acdlite/recompose/blob/master/src/packages/recompose/compose.js
 
