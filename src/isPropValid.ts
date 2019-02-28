@@ -28,5 +28,12 @@ const isCustomAttribute = RegExp.prototype.test.bind(
   new RegExp(`^(x|data|aria)-[${ATTRIBUTE_NAME_CHAR}]*$`)
 )
 
-export default (name: string) =>
-  ATTRIBUTE_REGEX.test(name) || isCustomAttribute(name.toLowerCase())
+/* Custom filter list */
+const OTHER_ATTRIBUTE_REGEX = /^(action)/g
+
+export default (name: string): boolean => {
+  return (
+    (ATTRIBUTE_REGEX.test(name) || isCustomAttribute(name.toLowerCase())) &&
+    !OTHER_ATTRIBUTE_REGEX.test(name)
+  )
+}
