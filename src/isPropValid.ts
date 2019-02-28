@@ -29,7 +29,7 @@ const isCustomAttribute = RegExp.prototype.test.bind(
 )
 
 /* Custom filter list */
-const OTHER_ATTRIBUTE_REGEX = /action/g
+const OTHER_ATTRIBUTE_REGEX = /^(action)/g
 
 export default (name: string): boolean => {
   return (
