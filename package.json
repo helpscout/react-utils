@@ -6,17 +6,14 @@
   "private": false,
   "scripts": {
     "prestart": "zero prestart",
-    "build:ts": "tsc",
-    "build:postclean": "rm -rf dist/__tests__ && rm -rf dist/__fixtures__",
-    "build": "npm run clean && npm run build:ts && npm run build:postclean",
-    "bundle": "zero build --bundle",
-    "clean": "rm -rf dist",
+    "build": "zero build && zero build --no-clean --ts --emitDeclarationOnly",
+    "postbuild": "rm -rf dist/__tests__ && rm -rf dist/__fixtures__",
+    "bundle": "zero bundle",
     "lint": "zero lint",
     "dev": "zero test --watchAll",
     "test": "zero test --coverage",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "validate": "zero validate",
-    "setup": "npm install && npm run validate -s",
     "format": "zero format",
     "precommit": "zero pre-commit",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
@@ -46,7 +43,7 @@
     "react": "^16 || ^15"
   },
   "devDependencies": {
-    "@helpscout/zero": "^2.0.5",
+    "@helpscout/zero": "3.0.1",
     "@storybook/addon-actions": "4.1.6",
     "@storybook/addon-links": "4.1.6",
     "@storybook/addons": "4.1.6",
@@ -56,7 +53,6 @@
     "@types/jest": "23.3.12",
     "@types/react": "16.7.18",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-jest": "^23.6.0",
     "coveralls": "3.0.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
@@ -70,7 +66,6 @@
   "dependencies": {
     "create-react-context": "0.2.3",
     "dash-get": "1.0.2",
-    "enzyme-adapter-react-16": "^1.7.1",
     "hoist-non-react-statics": "3.2.1"
   }
 }
