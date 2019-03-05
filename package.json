@@ -43,7 +43,7 @@
     "react": "^16 || ^15"
   },
   "devDependencies": {
-    "@helpscout/zero": "3.0.1",
+    "@helpscout/zero": "3.0.2",
     "@storybook/addon-actions": "4.1.6",
     "@storybook/addon-links": "4.1.6",
     "@storybook/addons": "4.1.6",
@@ -52,16 +52,14 @@
     "@types/enzyme": "3.1.15",
     "@types/jest": "23.3.12",
     "@types/react": "16.7.18",
-    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
     "coveralls": "3.0.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
-    "nyc": "13.1.0",
+    "nyc": "^13.3.0",
     "react": "^16",
     "react-dom": "^16",
-    "react-test-renderer": "^16.7.0",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "react-test-renderer": "^16.7.0"
   },
   "dependencies": {
     "create-react-context": "0.2.3",
