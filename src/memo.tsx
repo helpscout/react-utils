@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ComponentType } from 'react'
 import hoistNonReactStatics from './hoistNonReactStatics'
 import shallowEqual, { CompareFunction } from './shallowEqual'
+import wrapComponentName from './wrapComponentName'
 import { isDefined, isFunction, noop } from './utils'
 
 const defaultLifeCycleHooks = {
@@ -20,12 +21,12 @@ export function memo<T>(
   let memoizedComponent: JSX.Element | undefined
 
   // Merge/extract options
-  const mergedLifecycleHooks = { ...defaultLifeCycleHooks, ...lifecycleHooks }
-  const { componentDidUpdate } = mergedLifecycleHooks
+  const lifecycles = { ...defaultLifeCycleHooks, ...lifecycleHooks }
+  const { componentDidUpdate } = lifecycles
   const shouldComponentUpdate = isFunction(areEqual) ? areEqual : shallowEqual
 
   const wrappedComponent = nextProps => {
-    // shallowEqual test for prop changes
+    // shouldComponentUpdate test for prop changes
     if (
       isDefined(memoizedComponent) &&
       shouldComponentUpdate(prevProps, nextProps)
@@ -38,11 +39,13 @@ export function memo<T>(
     // Update the memozied component
     memoizedComponent = <Component {...nextProps} />
 
-    // Provide the componentDidUpdate hook
+    // Call the componentDidUpdate hook
     componentDidUpdate(prevProps, nextProps)
 
     return memoizedComponent
   }
+
+  wrappedComponent.displayName = wrapComponentName(Component, 'memo')
 
   return hoistNonReactStatics(wrappedComponent, Component)
 }
