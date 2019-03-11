@@ -22,11 +22,11 @@ export function isFunction<T>(value: unknown): value is Function {
   return typeOf(value, 'function')
 }
 
-export function isNumber<T>(value: unknown): value is Number {
+export function isNumber<T>(value: unknown): value is number {
   return typeOf(value, 'number')
 }
 
-export function isString<T>(value: unknown): value is String {
+export function isString<T>(value: unknown): value is string {
   return typeOf(value, 'string')
 }
 
@@ -50,4 +50,8 @@ export function createUniqueIDFactory(prefix: string = ''): () => string {
 export function createUniqueIndexFactory(start: number = 1) {
   let index = typeof start === 'number' ? start : 1
   return (): number => index++
+}
+
+export function noop() {
+  return undefined
 }

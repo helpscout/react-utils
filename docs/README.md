@@ -12,6 +12,7 @@
 - [`getWindowFromComponent`](getwindowfromcomponent.md)
 - [`hoistNonReactStatics`](hoistnonreactstatics.md)
 - [`isReactComponent`](isreactcomponent.md)
+- [`memo`](memo.md)
 - [`perf`](perf.md)
 - [`renderSpy`](renderSpy.md)
 - [`withSafeSetState`](withsafesetstate.md)
