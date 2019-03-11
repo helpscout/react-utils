@@ -2,6 +2,8 @@
 
 A higher-order component that memoizes and prevents re-renders of components if the props are unchanged.
 
+For additional documentation, check out [React.memo](https://reactjs.org/docs/react-api.html#reactmemo)
+
 ## Arguments
 
 | Argument         | Type                             | Description                               |
@@ -30,7 +32,9 @@ Alternatively...
 import React from 'react'
 import memo from '@helpscout/react-utils/dist/memo'
 
-const Kip = Memo(props => <div {...props} />)
+const MemoizedKip = memo(function Kip(props) {
+  return <div {...props} />
+})
 ```
 
 ## Lifecycle hooks
