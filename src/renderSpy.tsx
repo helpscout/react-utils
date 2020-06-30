@@ -26,7 +26,7 @@ function renderSpy(options) {
       performanceTimer: number = 0
       ownerDisplayName = ''
 
-      componentWillMount() {
+      UNSAFE_componentWillMount() {
         this.ownerDisplayName = getOwnerDisplayName(this)
         this.startTimer()
       }
@@ -37,7 +37,7 @@ function renderSpy(options) {
         console.groupEnd()
       }
 
-      componentWillUpdate() {
+      UNSAFE_componentWillUpdate() {
         this.startTimer()
       }
 
@@ -53,11 +53,11 @@ function renderSpy(options) {
           console.log(
             '%cWasted render: %cNo props were changed for this render.',
             'color: gray; font-weight: bold;',
-            'color: gray; font-weight: normal;'
+            'color: gray; font-weight: normal;',
           )
           console.log(
             `%cBelow is a collection of wasted renders we've seen so far:`,
-            'color: #bbb'
+            'color: #bbb',
           )
 
           // Add to the internal wasted render collection (:sob:)
@@ -79,12 +79,12 @@ function renderSpy(options) {
           console.log(
             '%cPrevious  ',
             'color: grey; font-weight: bold;',
-            previous
+            previous,
           )
           console.log(
             '%cChanges   ',
             'color: dodgerblue; font-weight: bold;',
-            diffs
+            diffs,
           )
           console.log('%cNext      ', 'color: green; font-weight: bold;', next)
         }
@@ -100,7 +100,7 @@ function renderSpy(options) {
         action: string,
         renderTime: any,
         collapsed: boolean,
-        extra?: any
+        extra?: any,
       ) => {
         const hasRenderTime = renderTime !== undefined && renderTime !== null
         let message = `%c${action} %c${displayName}`
@@ -150,12 +150,12 @@ function renderSpy(options) {
 
     const EnhancedComponent = hoistNonReactStatics(
       ReactRenderSpy,
-      WrappedComponent
+      WrappedComponent,
     )
 
     EnhancedComponent.displayName = wrapComponentName(
       WrappedComponent,
-      'withRenderSpy'
+      'withRenderSpy',
     )
 
     return EnhancedComponent
@@ -192,7 +192,7 @@ export function printWastedRenderCollection(renderSpyWastedRenderCollection) {
     .sort(
       /* istanbul ignore next */
       // @ts-ignore
-      (a, b) => b.wastedRenders - a.wastedRenders
+      (a, b) => b.wastedRenders - a.wastedRenders,
     )
     // Make the data pretty for printing
     .map(item => {
