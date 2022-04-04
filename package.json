@@ -40,7 +40,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16 || ^15"
+    "react": "^17 || ^16 || ^15"
   },
   "devDependencies": {
     "@helpscout/zero": "3.0.2",
